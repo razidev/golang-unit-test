@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 
 	"testing"
 )
@@ -30,9 +31,16 @@ func TestHeloWolrd2(t *testing.T) {
 	fmt.Println("TestHeloWolrd2 done")
 }
 
-//Using Assert
+//Using Assert == t.Fail()
 func TestHelloWorldAssert(t *testing.T) {
 	result := HelloWorld("Razi")
 	assert.Equal(t, "Hello Razi", result, "Error, result should be 'Hello Razi'")
 	fmt.Println("TestHelloWorldAssert is done")
+}
+
+//Using Require == t.FailNow()
+func TestHelloWorldRequire(t *testing.T) {
+	result := HelloWorld("Razi")
+	require.Equal(t, "Hello Razi", result, "Error, result should be 'Hello Razi'")
+	fmt.Println("TestHelloWorldRequire is not execute here if error")
 }
