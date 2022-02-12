@@ -67,3 +67,17 @@ func TestMain(m *testing.M) {
 	fmt.Println()
 	fmt.Println(">>> After Unit Test <<<")
 }
+
+func TestSubTest(t *testing.T) {
+	t.Run("Razi", func(t *testing.T) {
+		result := HelloWorld("Razi")
+		require.Equal(t, "Hello Razi", result, "Error, result should be 'Hello Razi'")
+	})
+
+	t.Run("Syahputro", func(t *testing.T) {
+		result := HelloWorld("Syahputro")
+		require.Equal(t, "Hello Syahputro", result, "Error, result should be 'Hello Syahputro'")
+	})
+
+	//if you want to run each subtest, e.g. go test -v -run=TestSubTest/Razi
+}
