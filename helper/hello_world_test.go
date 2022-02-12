@@ -26,7 +26,7 @@ func TestHeloWolrd1(t *testing.T) {
 func TestHeloWolrd2(t *testing.T) {
 	result := HelloWorld("Hulk")
 
-	if result != "HelloHulk" {
+	if result != "Hello Hulk" {
 		t.Fatal("Error, result should be 'HelloHulk'")
 	}
 	fmt.Println("TestHeloWolrd2 done")
@@ -46,12 +46,24 @@ func TestHelloWorldRequire(t *testing.T) {
 	fmt.Println("TestHelloWorldRequire is not execute here if error")
 }
 
+// skip the process after skip function called, still success
 func TestSkip(t *testing.T) {
-	if runtime.GOOS == "darwin" {
-		t.Skip("Can not run on Mac OS")
+	if runtime.GOOS != "darwin" {
+		t.Skip("Can not run except on Mac OS")
 	}
 
 	result := HelloWorld("Razi")
 	require.Equal(t, "Hello Razi", result, "Error, result should be 'Hello Razi'")
 	fmt.Println("TestSkip is done")
+}
+
+//this unit test is to run all unit test
+func TestMain(m *testing.M) {
+	fmt.Println(">>> Before Unit Test <<<")
+	fmt.Println()
+
+	m.Run()
+
+	fmt.Println()
+	fmt.Println(">>> After Unit Test <<<")
 }
