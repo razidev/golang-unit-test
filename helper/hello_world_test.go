@@ -81,3 +81,32 @@ func TestSubTest(t *testing.T) {
 
 	//if you want to run each subtest, e.g. go test -v -run=TestSubTest/Razi
 }
+
+func TestTable(t *testing.T) {
+	tests := []struct {
+		name, request, expected string
+	}{
+		{
+			name:     "Batman",
+			request:  "Batman",
+			expected: "Hello Batman",
+		},
+		{
+			name:     "Superman",
+			request:  "Superman",
+			expected: "Hello Superman",
+		},
+		{
+			name:     "Aquaman",
+			request:  "Aquaman",
+			expected: "Hello Aquaman",
+		},
+	}
+
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			result := HelloWorld(test.request)
+			require.Equal(t, test.expected, result, "Error, result should be"+test.expected)
+		})
+	}
+}
