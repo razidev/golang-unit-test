@@ -110,3 +110,17 @@ func TestTable(t *testing.T) {
 		})
 	}
 }
+
+//how to run benchmark
+//go test -v -run=TestNotMatch -bench=Benchmarkxxx
+func BenchmarkHelloWorld(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		HelloWorld("Razi")
+	}
+}
+
+func BenchmarkHelloWorldSyahputro(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		HelloWorld("Syahputro")
+	}
+}
