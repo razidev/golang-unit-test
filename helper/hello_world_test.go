@@ -124,3 +124,17 @@ func BenchmarkHelloWorldSyahputro(b *testing.B) {
 		HelloWorld("Syahputro")
 	}
 }
+
+func BenchmarkSub(b *testing.B) {
+	b.Run("Razi", func(b *testing.B) {
+		for i := 0; i < b.N; i++ {
+			HelloWorld("Razi")
+		}
+	})
+
+	b.Run("Syahputro", func(b *testing.B) {
+		for i := 0; i < b.N; i++ {
+			HelloWorld("Syahputro")
+		}
+	})
+}
